@@ -6,7 +6,7 @@ import re
 from keybert import KeyBERT
 import yake
 app = Flask(__name__)
-@app.route('/Endpoint2',methods=['GET','POST'])
+@app.route('/tag-api-1',methods=['GET','POST'])
 def endpoint2():
   req = request.get_json()
   list1 = []
@@ -54,7 +54,7 @@ def endpoint2():
 #     return yake_key
 # ################# 
 
-@app.route('/Endpoint1', methods=['GET','POST'])
+@app.route('/tag-api-2', methods=['GET','POST'])
 def index():
   req = request.get_json()
   list1 = []
