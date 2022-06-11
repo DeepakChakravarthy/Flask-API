@@ -3,7 +3,7 @@ from flask import Flask
 from flask import request
 from flask import jsonify
 import re
-from keybert import KeyBERT
+# from keybert import KeyBERT
 import yake
 app = Flask(__name__)
 @app.route('/tag-api-1',methods=['GET','POST'])
@@ -54,25 +54,25 @@ def endpoint2():
 #     return yake_key
 # ################# 
 
-@app.route('/tag-api-2', methods=['GET','POST'])
-def index():
-  req = request.get_json()
-  list1 = []
-  list1.append({'html':req['article-content']})
-  i = ', '.join(strings['html'] for strings in list1)
-  print(i)
-  print(type(i))
-  print("Preprocess works")
-  kw_model = KeyBERT(model="all-MiniLM-L6-v2")
-  clean = re.compile('<.*?>')
-  re.sub(clean, '', i)
-  language = "english"
-  max_ngram_size = (1, 3)
-  numOfKeywords = 3
-  keywords = kw_model.extract_keywords(i,keyphrase_ngram_range= max_ngram_size,stop_words= language,top_n= numOfKeywords, diversity=0.2)
-  keywords_list= list(dict(keywords).keys())
-  final_keywords_list = [i.title() for i in keywords_list]
-  d1 = dict(enumerate(final_keywords_list))
-  y = json.dumps(d1)
-  return y
+# @app.route('/tag-api-2', methods=['GET','POST'])
+# def index():
+#   req = request.get_json()
+#   list1 = []
+#   list1.append({'html':req['article-content']})
+#   i = ', '.join(strings['html'] for strings in list1)
+#   print(i)
+#   print(type(i))
+#   print("Preprocess works")
+#   kw_model = KeyBERT(model="all-MiniLM-L6-v2")
+#   clean = re.compile('<.*?>')
+#   re.sub(clean, '', i)
+#   language = "english"
+#   max_ngram_size = (1, 3)
+#   numOfKeywords = 3
+#   keywords = kw_model.extract_keywords(i,keyphrase_ngram_range= max_ngram_size,stop_words= language,top_n= numOfKeywords, diversity=0.2)
+#   keywords_list= list(dict(keywords).keys())
+#   final_keywords_list = [i.title() for i in keywords_list]
+#   d1 = dict(enumerate(final_keywords_list))
+#   y = json.dumps(d1)
+#   return y
 app.run()
