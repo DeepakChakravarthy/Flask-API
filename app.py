@@ -76,5 +76,5 @@ def endpoint2():
 #   d1 = dict(enumerate(final_keywords_list))
 #   y = json.dumps(d1)
 #   return y
-port = int(os.environ.get('PORT', 5000))
-app.run(host='0.0.0.0', port=port, debug=True)
+
+app.run(debug=True, port=33507)
