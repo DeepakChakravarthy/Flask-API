@@ -29,9 +29,11 @@ def endpoint2():
   for kw, v in keywords:
     #print("Keyphrase: ",kw, ": score", v)
     yake_key.append(kw.title())
-  d1 = dict(enumerate(yake_key))
-  y = json.dumps(d1)
-  return y
+  d1 = {}
+  d1['Tags'] = yake_key
+  #d1 = dict(enumerate(yake_key))
+  #y = json.dumps(d1)
+  return d1
 
 # def preprocess(c):
 #     clean = re.compile('<.*?>')
