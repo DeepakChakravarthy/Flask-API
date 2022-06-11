@@ -3,6 +3,7 @@ from flask import Flask
 from flask import request
 from flask import jsonify
 import re
+import os
 # from keybert import KeyBERT
 import yake
 app = Flask(__name__)
@@ -75,4 +76,5 @@ def endpoint2():
 #   d1 = dict(enumerate(final_keywords_list))
 #   y = json.dumps(d1)
 #   return y
-app.run()
+port = int(os.environ.get('PORT', 5000))
+app.run(host='0.0.0.0', port=port, debug=True)
