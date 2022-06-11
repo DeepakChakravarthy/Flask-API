@@ -77,4 +77,4 @@ def endpoint2():
 #   y = json.dumps(d1)
 #   return y
 
-app.run(debug=True, port=33507)
+app.run(debug=True, port=5000)
